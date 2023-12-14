@@ -1,0 +1,98 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Interactive Tip Jar</title>
+
+<head>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+    body {
+        font-family: 'Orbitron', sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+        background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+        color: #fff;
+    }
+    .tip-jar {
+        text-align: center;
+        padding: 20px;
+        background-color: rgba(255, 255, 255, 0.1);
+        border-radius: 10px;
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+    .tip-jar h2 {
+        margin: 0 0 20px 0;
+        font-weight: 500;
+    }
+    .tip-jar button {
+        font-size: 16px;
+        padding: 10px 20px;
+        margin: 10px;
+        border: none;
+        border-radius: 5px;
+        background-color: #556270;
+        color: white;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        box-shadow: 0 0 15px 0 rgba(0, 255, 255, 0.6);
+        text-transform: uppercase;
+    }
+    .tip-jar button:hover {
+        background-color: #4ECDC4;
+        box-shadow: 0 0 20px 0 rgba(0, 255, 255, 0.8);
+        transform: translateY(-3px);
+    }
+    .tip-jar button:active {
+        transform: translateY(1px);
+    }
+    .clicked {
+        box-shadow: 0 0 25px 0 rgba(255, 215, 0, 0.8) !important;
+    }
+    @media (max-width: 600px) {
+        .tip-jar button {
+            width: 80%;
+            margin: 10px 0;
+        }
+    }
+</style>
+</head>
+
+
+</style>
+</head>
+<body>
+    <div class="tip-jar">
+        <h2>Thank You for Your Support!</h2>
+        <button data-amount="5">$5</button>
+        <button data-amount="10">$10</button>
+        <button data-amount="20">$20</button>
+        <button data-amount="50">$50</button>
+    </div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const buttons = document.querySelectorAll('.tip-jar button');
+
+    buttons.forEach(button => {
+        button.addEventListener('click', function() {
+            // Animation or visual feedback
+            button.classList.add('clicked');
+            setTimeout(() => button.classList.remove('clicked'), 200);
+
+            // Mock payment process
+            const amount = button.getAttribute('data-amount');
+            alert('Redirecting to payment gateway for $' + amount + ' tip...');
+            // In a real scenario, here you would redirect to a payment gateway or open a payment modal
+        });
+    });
+});
+</script>
+</body>
+</html>
